@@ -1,7 +1,7 @@
 {
 	"id": "random-note-opener",
 	"name": "Random Note Opener",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "Open a random note from your vault, with folder/tag exclusion, weighted random, history navigation, and more.",
 	"author": "Ljh15224052032",
