@@ -1,12 +1,12 @@
 import { Notice, PaneType, Plugin, TFile } from "obsidian";
-import { DEFAULT_SETTINGS, MyPluginSettings } from "./types";
-import { SampleSettingTab } from "./settings";
+import { DEFAULT_SETTINGS, RandomNoteSettings } from "./types";
+import { RandomNoteSettingTab } from "./settings";
 import { getCandidates, selectRandomFile, countCandidates } from "./utils/random";
 import { HistoryManager } from "./utils/history";
 import { createStatusBarItem, updateStatusBar } from "./utils/statusBar";
 
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class RandomNotePlugin extends Plugin {
+	settings: RandomNoteSettings;
 	statusBarItem: HTMLElement;
 	historyManager: HistoryManager;
 
@@ -22,7 +22,7 @@ export default class MyPlugin extends Plugin {
 
 		// 左侧栏骰子图标
 		this.addRibbonIcon("dice", "打开随机笔记", () => {
-			this.openRandomNote();
+			void this.openRandomNote();
 		});
 
 		// 命令：打开随机笔记
@@ -30,7 +30,7 @@ export default class MyPlugin extends Plugin {
 			id: "open-random-note",
 			name: "打开随机笔记",
 			callback: () => {
-				this.openRandomNote();
+				void this.openRandomNote();
 			},
 		});
 
@@ -39,12 +39,12 @@ export default class MyPlugin extends Plugin {
 			id: "open-previous-random-note",
 			name: "打开上一个随机笔记",
 			callback: () => {
-				this.openPreviousRandomNote();
+				void this.openPreviousRandomNote();
 			},
 		});
 
 		// 设置面板
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new RandomNoteSettingTab(this.app, this));
 
 		// 监听文件变化，刷新状态栏
 		this.registerEvent(this.app.vault.on("create", () => this.refreshStatusBar()));

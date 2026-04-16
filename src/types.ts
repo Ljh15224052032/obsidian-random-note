@@ -1,4 +1,4 @@
-export interface MyPluginSettings {
+export interface RandomNoteSettings {
 	// 排除文件夹
 	excludedFolders: string[];
 	// 排除标签
@@ -15,7 +15,7 @@ export interface MyPluginSettings {
 	weightDecayDays: number;
 }
 
-export const DEFAULT_SETTINGS: MyPluginSettings = {
+export const DEFAULT_SETTINGS: RandomNoteSettings = {
 	excludedFolders: [],
 	excludedTags: [],
 	openMode: 'current',

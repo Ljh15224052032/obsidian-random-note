@@ -1,7 +1,7 @@
 import { App, TFile } from "obsidian";
-import { MyPluginSettings } from "../types";
+import { RandomNoteSettings } from "../types";
 
-export function getCandidates(app: App, settings: MyPluginSettings, activeFile: TFile | null): TFile[] {
+export function getCandidates(app: App, settings: RandomNoteSettings, activeFile: TFile | null): TFile[] {
 	let files: TFile[] = app.vault.getMarkdownFiles();
 
 	if (activeFile && files.length > 1) {
@@ -56,7 +56,7 @@ export function getCandidates(app: App, settings: MyPluginSettings, activeFile: 
 	return files;
 }
 
-export function selectRandomFile(candidates: TFile[], settings: MyPluginSettings): TFile | null {
+export function selectRandomFile(candidates: TFile[], settings: RandomNoteSettings): TFile | null {
 	if (candidates.length === 0) return null;
 
 	if (!settings.weightedRandom) {
@@ -83,7 +83,7 @@ export function selectRandomFile(candidates: TFile[], settings: MyPluginSettings
 	return candidates[candidates.length - 1]!;
 }
 
-export function countCandidates(app: App, settings: MyPluginSettings): number {
+export function countCandidates(app: App, settings: RandomNoteSettings): number {
 	return getCandidates(app, settings, null).length;
 }
 

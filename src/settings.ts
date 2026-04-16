@@ -1,11 +1,11 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
-import MyPlugin from "./main";
-import { MyPluginSettings } from "./types";
+import RandomNotePlugin from "./main";
+import { RandomNoteSettings } from "./types";
 
-export class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+export class RandomNoteSettingTab extends PluginSettingTab {
+	plugin: RandomNotePlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: RandomNotePlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -53,7 +53,7 @@ export class SampleSettingTab extends PluginSettingTab {
 				.addOption("split", "右侧分栏")
 				.setValue(this.plugin.settings.openMode)
 				.onChange(async (value: string) => {
-					this.plugin.settings.openMode = value as MyPluginSettings["openMode"];
+					this.plugin.settings.openMode = value as RandomNoteSettings["openMode"];
 					await this.plugin.saveSettings();
 				}));
 
