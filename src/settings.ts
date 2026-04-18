@@ -22,9 +22,9 @@ export class RandomNoteSettingTab extends PluginSettingTab {
 		// 排除文件夹
 		new Setting(containerEl)
 			.setName("排除文件夹")
-			.setDesc("每行一个文件夹路径，随机时跳过这些文件夹中的笔记（如 Templates 或 Archive/daily）")
+			.setDesc("每行一个文件夹路径，随机时跳过这些文件夹中的笔记（如 templates 或 archive/daily）")
 			.addTextArea(text => text
-				.setPlaceholder("Templates\nArchive/daily")
+				.setPlaceholder("templates" + "\n" + "archive/daily")
 				.setValue(this.plugin.settings.excludedFolders.join("\n"))
 				.onChange(async (value) => {
 					this.plugin.settings.excludedFolders = value.split("\n").map(s => s.trim()).filter(s => s.length > 0);
@@ -36,7 +36,7 @@ export class RandomNoteSettingTab extends PluginSettingTab {
 			.setName("排除标签")
 			.setDesc("每行一个标签，随机时跳过包含这些标签的笔记（如 #template）")
 			.addTextArea(text => text
-				.setPlaceholder("#template\n#moc")
+				.setPlaceholder("#template" + "\n" + "#moc")
 				.setValue(this.plugin.settings.excludedTags.join("\n"))
 				.onChange(async (value) => {
 					this.plugin.settings.excludedTags = value.split("\n").map(s => s.trim()).filter(s => s.length > 0);

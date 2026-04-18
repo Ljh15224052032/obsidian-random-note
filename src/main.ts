@@ -57,7 +57,7 @@ export default class RandomNotePlugin extends Plugin {
 	}
 
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData() as Partial<RandomNoteSettings>);
 	}
 
 	async saveSettings() {
